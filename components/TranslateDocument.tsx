@@ -48,7 +48,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
     const [isPending, startTransition] = useTransition();
     const [language, setLanguage] = useState<string>("");
     const [summary, setSummary] = useState("");
-    const [question, setQuestion] = useState("");
+    // const [question, setQuestion] = useState("");
 
     const handleAskQuestion = (e: FormEvent) => {
         e.preventDefault();
@@ -89,7 +89,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
                         Select a language and AI will translate a summary of the document in the selected language.
                     </DialogDescription>
                     <hr className="mt-5" />
-                    {question && <p className="mt-5 text-gray-500">Q: {question}</p>}
+                    {/* {question && <p className="mt-5 text-gray-500">Q: {question}</p>} */}
                 </DialogHeader>
                 {
                     summary && (

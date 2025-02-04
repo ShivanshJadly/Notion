@@ -49,9 +49,6 @@ function ChatToDocument({ doc }: { doc: Y.Doc }) {
             }
 
         });
-
-        
-
     }
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -78,7 +75,7 @@ function ChatToDocument({ doc }: { doc: Y.Doc }) {
                                 <BotIcon className="w-10 flex-shrink-0"/>
                                 <p className="font-bold">GPT {isPending?"is thinking...": "Says: "}</p>
                             </div>
-                            <p>{isPending?"Thinking...": <Markdown>{summary}</Markdown>}</p>
+                            {isPending?"Thinking...": <Markdown>{summary}</Markdown>}
                         </div>
                     )
                 }
