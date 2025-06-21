@@ -12,7 +12,9 @@ function Header() {
       )}
 
       {/* Breadcrumbs */}
-      <Breadcumbs />
+      <div className="flex">
+        <Breadcumbs />
+      </div>
       <div>
         <SignedOut>
           <SignInButton />

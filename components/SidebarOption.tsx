@@ -12,7 +12,7 @@ function SidebarOption({href, id}: {href: string, id: string}) {
     if(!data) return null;
 
   return (
-    <Link href={href} className={`border p-2 rounded-md ${isActive ? "bg-gray-300 font-bold border-black" : "border-gray-400"}`}>
+    <Link href={href} className={`border p-2 rounded-md ${isActive ? "bg-gray-300 font-bold border-black dark:bg-blue-950" : "border-gray-400 dark:bg-black"}`}>
         <p className=" truncate ">{data.title}</p>
     </Link>
   )

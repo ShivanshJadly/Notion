@@ -35,10 +35,10 @@ function Sidebar() {
     const [data] = useCollection(
         user && (
             query(collectionGroup(db, "rooms"),
-                where("userId", "==", user.emailAddresses[0].toString()))
+            where("userId", "==", user.emailAddresses[0].toString()))
         )
     );
-
+    
     useEffect(() => {
         if (!data) return;
 
@@ -69,8 +69,10 @@ function Sidebar() {
         setGroupedData(grouped);
     }, [data]);
 
+    console.log("groupdata: ",groupedData);
+
     const menuOption = (
-        <>
+        <div>
             <NewDocumentButton />
 
             {/* My Document  */}
@@ -99,10 +101,10 @@ function Sidebar() {
                 )}
 
             </div>
-        </>
+        </div>
     )
     return (
-        <div className="p-2 md:p-5 bg-gray-200 relative">
+        <div className="p-2 md:p-5 bg-gray-200 relative dark:bg-black border-2">
             <div className="md:hidden">
                 <Sheet>
                     <SheetTrigger>

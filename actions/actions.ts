@@ -3,8 +3,6 @@
 import { adminDb } from "@/firebase-admin";
 import liveblocks from "@/lib/liveblocks";
 import { auth } from "@clerk/nextjs/server";
-import exp from "constants";
-import { NextRequest } from "next/server";
 
 export async function createNewDocument(){
     auth.protect();

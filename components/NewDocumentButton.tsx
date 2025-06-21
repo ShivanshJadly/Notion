@@ -10,7 +10,10 @@ function NewDocumentButton() {
   const handleCreateNewDocument = ()=>{
     startTransition(async ()=>{
       const {docId} =  await createNewDocument();
-      router.push(`doc/${docId}`);
+
+      // router.push(`doc/${docId}`); ----> this is a relative path it means if i am on certain page and it has a route like (/doc/doc-1) than it will redirect to route that will look like (/doc/doc-1/doc/doc-2) which will give 404 if not exists.
+
+      router.push(`/doc/${docId}`); // this will always route from the app route.
     })  
   }
   return (

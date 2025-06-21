@@ -26,7 +26,7 @@ export default function RootLayout({
             {/* Sidebar */}
             <Sidebar />
 
-            <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide">
+            <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide dark:bg-black">
               {children}
             </div>
           </div>

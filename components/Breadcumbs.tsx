@@ -27,7 +27,8 @@ function Breadcumbs() {
 
                 {segments.map((segment, index) => {
                     if (!segment) return null;
-                    const href = `/${segments.slice(0, index + 1).join("/")}`;
+                    const href = `${segments.slice(0, index + 1).join("/")}`;
+                    console.log("href: ", href);
                     const isLast = index === segments.length - 1;
                     return (
                         <Fragment key={segment}>
