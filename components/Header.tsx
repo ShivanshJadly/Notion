@@ -2,6 +2,7 @@
 
 import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/nextjs"
 import Breadcumbs from "./Breadcumbs"
+import ThemeToggle from "@/components/ThemeToggle"
 
 function Header() {
   const {user} = useUser()
@@ -12,8 +13,9 @@ function Header() {
       )}
 
       {/* Breadcrumbs */}
-      <div className="flex">
+      <div className="flex items-center gap-3">
         <Breadcumbs />
+        <ThemeToggle />
       </div>
       <div>
         <SignedOut>

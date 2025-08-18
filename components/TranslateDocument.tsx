@@ -66,10 +66,18 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
                     })
                 }
             );
-            if(res.ok){
-                const {translated_text} = await res.json();
-                setSummary(translated_text);
-                toast.success("Translated Summary successfully!")
+            try{
+                if(res.ok){
+                    const data = await res.json();
+                    const translated = data?.translated_text ?? data?.text ?? (typeof data === 'string' ? data : JSON.stringify(data));
+                    setSummary(translated || "");
+                    toast.success("Translated Summary successfully!")
+                }else{
+                    const err = await res.json().catch(()=>null);
+                    toast.error(err?.error ?? "Failed to translate");
+                }
+            }catch(err:any){
+                toast.error(err?.message ?? "Failed to translate");
             }
         });
     }
@@ -91,17 +99,21 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
                     <hr className="mt-5" />
                     {/* {question && <p className="mt-5 text-gray-500">Q: {question}</p>} */}
                 </DialogHeader>
-                {
-                    summary && (
-                        <div className="flex flex-col items-start max-h-96 overflow-y-scroll gap-2 p-5 bg-gray-100">
-                            <div className="flex">
-                                <BotIcon className="w-10 flex-shrink-0"/>
-                                <p className="font-bold">GPT {isPending?"is thinking...": "Says: "}</p>
-                            </div>
-                            <p>{isPending?"Thinking...": <Markdown>{summary}</Markdown>}</p>
+                {summary && (
+                    <div className="flex flex-col items-start max-h-96 overflow-y-auto gap-2 p-5 bg-muted text-foreground border rounded-md">
+                        <div className="flex items-center mb-2">
+                            <BotIcon className="w-10 flex-shrink-0 text-primary mr-2" />
+                            <p className="font-bold text-muted-foreground">
+                                GPT {isPending ? "is thinking..." : "Says:"}
+                            </p>
                         </div>
-                    )
-                }
+                        {isPending ? (
+                            <p className="text-muted-foreground">Thinking...</p>
+                        ) : (
+                            <Markdown>{summary}</Markdown>
+                        )}
+                    </div>
+                )}
                 <form onSubmit={handleAskQuestion} className="flex gap-2">
                     <Select
                         value={language}
