@@ -51,8 +51,9 @@ function ChatToDocument({ doc }: { doc: Y.Doc }) {
                     const err = await res.json().catch(()=>null);
                     toast.error(err?.error ?? "Failed to get answer");
                 }
-            }catch(err:any){
-                toast.error(err?.message ?? "Failed to get answer");
+            }catch(err: unknown){
+                const message = err instanceof Error ? err.message : "Failed to get answer";
+                toast.error(message);
             }
 
         });

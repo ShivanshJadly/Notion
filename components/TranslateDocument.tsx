@@ -76,8 +76,9 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
                     const err = await res.json().catch(()=>null);
                     toast.error(err?.error ?? "Failed to translate");
                 }
-            }catch(err:any){
-                toast.error(err?.message ?? "Failed to translate");
+            }catch(err: unknown){
+                const message = err instanceof Error ? err.message : "Failed to translate";
+                toast.error(message);
             }
         });
     }
