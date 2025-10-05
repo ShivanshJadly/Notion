@@ -1,11 +1,22 @@
-import { ArrowLeftCircle } from "lucide-react";
+import { SignedOut, SignInButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function LandingPage() {
+  const session = await auth();
+  if (session.userId) redirect("/dashboard");
+
   return (
-      <main className="flex items-center space-x-2 animate-pulse">
-        <ArrowLeftCircle className="w-12 h-12"/>
-        <h1 className="font-bold">Get started with creating New Document</h1>
-      </main>
- 
-  ); 
+    <>
+      <SignedOut>
+        <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
+          <h1 className="text-4xl font-bold mb-4">Welcome to Notemaker</h1>
+          <SignInButton mode="modal">
+            <Button size="lg">Sign In to Get Started</Button>
+          </SignInButton>
+        </div>
+      </SignedOut>
+    </>
+  );
 }

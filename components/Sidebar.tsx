@@ -83,7 +83,7 @@ function Sidebar() {
                     <>
                         <h1 className="text-gray-500 font-semibold text-sm">My Documents</h1>
                         {groupedData.owner.map((doc) => (
-                            <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
+                            <SidebarOption key={doc.id} id={doc.id} href={`/dashboard/doc/${doc.id}`} />
                         ))}
                     </>
                 )}
@@ -95,7 +95,7 @@ function Sidebar() {
                     <>
                         <h1 className="text-gray-500 font-semibold text-sm">Shared with Me</h1>
                         {groupedData.editor.map((doc) => (
-                            <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
+                            <SidebarOption key={doc.id} id={doc.id} href={`/dashboard/doc/${doc.id}`} />
                         ))}
                     </>
                 )}
