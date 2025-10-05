@@ -12,12 +12,10 @@ function NewDocumentButton() {
       startTransition(async ()=>{
       const {docId} =  await createNewDocument();
 
-      // router.push(`doc/${docId}`); ----> this is a relative path it means if i am on certain page and it has a route like (/doc/doc-1) than it will redirect to route that will look like (/doc/doc-1/doc/doc-2) which will give 404 if not exists.
-
-      router.push(`dashboard/doc/${docId}`); // this will always route from the app route.
+      router.push(`dashboard/doc/${docId}`);
     })  
     } catch (error) {
-      console.log("User is not logged in or signed up! Go sign up motherf****r");
+      console.log("User is not logged in or signed up!");
     }
     
   }
