@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/<your-user>/<your-repo>.git'
+                git branch: 'main', url: 'https://github.com/ShivanshJadly/Notion.git'
             }
         }
 
