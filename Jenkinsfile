@@ -16,13 +16,13 @@ pipeline {
         }
 
         stage('Build') {
-            when {
-                expression { fileExists('package.json') && sh(returnStdout: true, script: "jq '.scripts.build' package.json") }
-            }
-            steps {
-                sh 'npm run build || true'
-            }
-        }
+   		 when {
+       			 expression { fileExists('package.json') }
+    		}
+    		steps {
+        		sh 'npm run build || true'
+   		 }
+	}
 
         stage('Deploy to Dev') {
             steps {
